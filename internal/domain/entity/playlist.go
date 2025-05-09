@@ -1,22 +1,25 @@
 package entity
 
-import "time"
+import (
+	"spotify_recommender/internal/domain/valueObject"
+	"time"
+)
 
 type Playlist struct {
 	ID          string                `json:"id"`
 	UserID      string                `json:"user_id"`
 	Name        string                `json:"name"`
 	Description string                `json:"description"`
-	Mood        valueobject.Mood      `json:"mood"`
-	Weather     valueobject.Weather   `json:"weather,omitempty"`
-	TimeOfDay   valueobject.TimeOfDay `json:"time_of_day,omitempty"`
+	Mood        valueObject.Mood      `json:"mood"`
+	Weather     valueObject.Weather   `json:"weather,omitempty"`
+	TimeOfDay   valueObject.TimeOfDay `json:"time_of_day,omitempty"`
 	Tracks      []string              `json:"track_ids"`
 	IsPublic    bool                  `json:"is_public"`
 	CreatedAt   time.Time             `json:"created_at"`
 	UpdatedAt   time.Time             `json:"updated_at"`
 }
 
-func NewPlaylist(userID, name, description string, mood valueobject.Mood) *Playlist {
+func NewPlaylist(userID, name, description string, mood valueObject.Mood) *Playlist {
 	return &Playlist{
 		UserID:      userID,
 		Name:        name,

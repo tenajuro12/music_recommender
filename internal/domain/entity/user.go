@@ -16,7 +16,7 @@ type User struct {
 type Preferences struct {
 	FavoriteGenres []string `json:"favorite_genres"`
 	DislikedGenres []string `json:"disliked_genres"`
-	MinTempo       int      `json:"min_tempo"`
+	MinTempo       float64  `json:"min_tempo"`
 	MaxTempo       float64  `json:"max_tempo"`
 	PreferredMoods []string `json:"preferred_moods"`
 }

@@ -1,13 +1,16 @@
 package entity
 
-import "time"
+import (
+	"spotify_recommender/internal/domain/valueObject"
+	"time"
+)
 
 type Recommendation struct {
 	ID        string                `json:"id"`
 	UserID    string                `json:"user_id"`
-	Mood      valueobject.Mood      `json:"mood"`
-	Weather   valueobject.Weather   `json:"weather"`
-	TimeOfDay valueobject.TimeOfDay `json:"time_of_day"`
+	Mood      valueObject.Mood      `json:"mood"`
+	Weather   valueObject.Weather   `json:"weather"`
+	TimeOfDay valueObject.TimeOfDay `json:"time_of_day"`
 	TrackIDs  []string              `json:"track_ids"`
 	CreatedAt time.Time             `json:"created_at"`
 	ExpiresAt time.Time             `json:"expires_at"`
@@ -15,9 +18,9 @@ type Recommendation struct {
 
 func NewRecommendation(
 	userID string,
-	mood valueobject.Mood,
-	weather valueobject.Weather,
-	timeOfDay valueobject.TimeOfDay,
+	mood valueObject.Mood,
+	weather valueObject.Weather,
+	timeOfDay valueObject.TimeOfDay,
 	trackIDs []string,
 ) *Recommendation {
 	now := time.Now()
