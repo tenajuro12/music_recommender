@@ -8,7 +8,6 @@ import (
 	"fmt"
 	"github.com/google/uuid"
 	"github.com/jmoiron/sqlx"
-	"log"
 	"sort"
 	"spotify_recommender/internal/domain/entity"
 	"spotify_recommender/internal/domain/valueObject"
@@ -123,7 +122,7 @@ func (r *TrackRepository) Save(ctx context.Context, track *entity.Track) error {
 	if err != nil {
 		return err
 	}
-	query := `INSERT INTO track (id, spotify_id, name, artist, album, release_date, popularity,
+	query := `INSERT INTO tracks (id, spotify_id, name, artist, album, release_date, popularity,
 			audio_features, preview_url, image_url, created_at, updated_at)
 			values (:id, :spotify_id, :name, :artist, :album, :release_date, :popularity,
 			:audio_features, :preview_url, :image_url, :created_at, :updated_at)`
@@ -171,7 +170,7 @@ func (r *TrackRepository) Update(ctx context.Context, track *entity.Track) error
 	return nil
 }
 
-func (r *TrackRepository) Delete(ctx context.Context, id string) error {
+func (r *p) Delete(ctx context.Context, id string) error {
 	query := `DELETE FROM tracks WHERE id=$1`
 	result, err := r.db.ExecContext(ctx, query, id)
 	if err != nil {
